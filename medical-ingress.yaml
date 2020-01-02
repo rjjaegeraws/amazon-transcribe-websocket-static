@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: public-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ca-central-1:289705308940:certificate/c2528c15-3227-4612-9823-65fc18155a21
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'    
+  labels:
+    app: medical-transcribe-ingress
+spec:
+  rules:
+  - host: medical-transcribe.octank.ca
+    http:
+      paths:      
+      - path: /*
+        backend:
+          serviceName: medical-transcribe
+          servicePort: 8889
+     

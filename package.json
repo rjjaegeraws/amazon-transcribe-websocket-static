@@ -8,7 +8,7 @@
     "url": "http://aws.amazon.com/"
   },
   "scripts": {
-    "build": "browserify lib/main.js -o dist/main.js -d"
+    "build": "browserify lib/main.js -o dist/main.js "
   },
   "keywords": [],
   "browserify": {
@@ -24,6 +24,7 @@
     ]
   },
   "dependencies": {
+    "@aws-amplify/auth": "^2.1.2",
     "@aws-sdk/eventstream-marshaller": "0.1.0-preview.2",
     "@aws-sdk/util-utf8-node": "0.1.0-preview.1",
     "browserify": "^16.3.0",

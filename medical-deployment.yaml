@@ -1,0 +1,25 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:    
+  creationTimestamp: null
+  labels:
+    app: medical-transcribe
+  name: medical-transcribe
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: medical-transcribe
+    spec:
+      containers:
+      - image: 289705308940.dkr.ecr.ca-central-1.amazonaws.com/medical-transcribe:latest
+        name: medical-transcribe
+        ports:
+        - containerPort: 80
+        resources: {}
+      restartPolicy: Always
+status: {}

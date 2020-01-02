@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:    
+  creationTimestamp: null
+  labels:
+    app: medical-transcribe
+  name: medical-transcribe
+spec:
+  ports:
+  - name: "8889"
+    port: 8889
+    targetPort: 80
+  type: NodePort
+  selector:
+    app: medical-transcribe
+status:
+  loadBalancer: {}

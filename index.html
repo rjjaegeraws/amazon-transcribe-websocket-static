@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Amazon Transcribe WebSocket API - Sample Application</title>
+    <title>Amazon Transcribe Medical WebSocket API - Sample Application</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="https://cdn.shoelace.style/1.0.0-beta24/shoelace.css">
@@ -12,15 +12,28 @@
 <body>
     <div class="container">
         <h1>
-            Real-time Audio Transcription
+            Real-time Audio Transcription Medical
         </h1>
         <p class="small-caps">
-            Using the <a href="https://aws.amazon.com/transcribe/">Amazon Transcribe</a> WebSocket API
+            Using the <a href="https://aws.amazon.com/transcribe/">Amazon Transcribe Medical</a> WebSocket API
         </p>
         <hr/>
         <p>
-            Create an <a href="https://aws.amazon.com/free/">AWS Account</a>, attach the necessary <a
-                href="policy.json"> IAM policy</a>, and enter your Access Id and Secret Key below.
+            This demo uses Amazon Cognito to authenticate and authorize users to interatct with the Amazon Transcribe Medical API.
+            To begin, click the 'SignIn' button below and either register an account or login. You will be redirected back to this page
+            and the AWS credentials will populate if successful. 
+            <p>
+                Click the 'Start' button to begin. Your browser may prompt you for access to the microphone; grant the permissions and continue. Once recording has started, the application is streaming your speech to be converted to accurate text in real-time.
+            </p>
+            <ul>
+                <li><a href="https://aws.amazon.com/blogs/machine-learning/introducing-medical-speech-to-text-with-amazon-transcribe-medical/">Introducing medical speech-to-text with Amazon Transcribe Medical</a></li>
+                <li><a href="https://aws.amazon.com/blogs/aws/amazon-transcribe-medical-real-time-automatic-speech-recognition-for-healthcare-customers/">Amazon Transcribe Medical – Real-Time Automatic Speech Recognition for Healthcare Customer</a></li>
+            </ul>            
+        </p>
+        <p>
+            <p>Example Text:</p>
+            <span>The liver attachments to the adrenal kidney were divided and the liver was reflected superiorly. The vena cava was identified. The main renal vein was identified. Coming superior to the main renal vein, staying right on the vena cava, all small vessels were clipped and then divided. Coming along the superior pole of the kidney, the tumor was dissected free from top of the kidney with clips and Bovie. The harmonic scalpel was utilized superiorly and laterally. Posterior attachments were divided between clips and once the whole adrenal was mobilized, the adrenal vein and one large adrenal artery were noted, doubly clipped, and divided.</span>
+            <span><a href="https://www.mtsamples.com/">MT Samples</a></span>
         </p>
 
         <div id="error" class="isa_error"></div>
@@ -53,20 +66,27 @@
                 </select>
 
                 <label>Region:</label>
-                <select id="region">
-                    <option value="us-east-1">US East (N. Virginia)</option>
-                    <option value="us-east-2">US East (Ohio)</option>
-                    <option value="us-west-2">US West (Oregon)</option>
-                    <option value="ap-southeast-2">Asia Pacific (Sydney)</option>
-                    <option value="ca-central-1">Canada (Central)</option>
-                    <option value="eu-west-1">EU (Ireland)</option>
+                <select id="region">                    
+                    <option value="ca-central-1" selected>Canada (Central)</option>                    
                 </select>
             </div>
         </div>
         <textarea id="transcript" placeholder="Press Start and speak into your mic" rows="5"
             readonly="readonly"></textarea>
+        <textarea id="logs" placeholder="Logs" rows="5"
+            readonly="readonly"></textarea>
         <div class="row">
             <div class="col">
+                <button id="signin-button" class="button-xl" title="Sign In">
+                    <i class="fa"></i> SignIn
+                </button>
+                <button id="signout-button" class="button-xl" title="Sign Out">
+                    <i class="fa"></i> SignOut
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">                
                 <button id="start-button" class="button-xl" title="Start Transcription">
                     <i class="fa fa-microphone"></i> Start
                 </button>
