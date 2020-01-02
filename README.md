@@ -1,8 +1,8 @@
-## Amazon Transcribe Websocket Static
+## Amazon Transcribe Medical Websocket Static
 
 [Try it out](https://transcribe-websockets.go-aws.com/)
 
-A static site demonstrating real-time audio transcription via Amazon Transcribe over a WebSocket.
+A static site demonstrating real-time audio transcription via Amazon Transcribe Medical over a WebSocket.
 
 This demo app uses browser microphone input and client-side JavaScript to demonstrate the real-time streaming audio transcription capability of [Amazon Transcribe](https://aws.amazon.com/transcribe/) using WebSockets.
 
@@ -26,6 +26,9 @@ Once you've bundled the JavaScript, all you need is a webserver. For example, fr
 npm install --global local-web-server
 ws
 ```
+
+## Amazon EKS & Cognito
+TODO...
 
 ### Credits
 
