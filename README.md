@@ -26,7 +26,7 @@ ws
 ```
 
 ## Amazon EKS & Cognito
-TODO..
+Deploy the ``cloudformation.yaml`` using CloudFormation. This template deploys and configures Cognito. After it is created, use the Output values to populate the required values in ``lib/main.js``.
 
 ### Credits
 
